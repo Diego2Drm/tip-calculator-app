@@ -14,6 +14,7 @@ html{
 
 export const Theme = {
   colors: {
+    Green400: "#26c0ab",
     Green900: "#00494d",
     Grey500: "#5e7a7d",
     Grey400: "#7f9c9f",
