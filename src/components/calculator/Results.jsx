@@ -1,7 +1,8 @@
-import React from "react"
+import React, { useContext } from "react"
 import { Section } from "./Input.styles";
 import styled from "styled-components";
 import { Theme } from "../../GlobalStyle";
+import { Context } from "../../context/MyContext";
 
 const Div = styled.div`
 display: flex;
@@ -43,18 +44,20 @@ border-radius: 1rem;
 `
 
 const Results = () => {
+  const { totalAmount, total, handleClear } = useContext(Context)
+
   return (
     <Section $primary>
       <Div>
         <Text><span>Tip Amount</span><span> / person</span></Text>
-        <Result>$4.27</Result>
+        <Result>{Number(totalAmount).toFixed(2)}</Result>
       </Div>
       <Div $primary>
         <Text><span>Total</span><span> / person</span></Text>
-        <Result>$32.79</Result>
+        <Result>{Number(total).toFixed(2)}</Result>
       </Div>
 
-      <BtnReset>
+      <BtnReset onClick={handleClear}>
         Reset
       </BtnReset>
     </Section>

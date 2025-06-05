@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { Theme } from "../../GlobalStyle";
 import { Section } from "./Input.styles";
+import { Context } from "../../context/MyContext";
 
 
 const Title = styled.h2`
@@ -48,17 +49,19 @@ font-family: "Space Mono", monospace;
 `
 
 const PercentagesBtn = () => {
-
-  const Percentages = ["5%", "10%", "15%", "25%", "50%"]
+  const { handleClick } = useContext(Context)
+  const Percentages = [5, 10, 15, 25, 50]
 
   return (
     <Section>
       <Title>Select Tip %</Title>
       <DivBtn>
         {Percentages.map((item, i) => (
-          <Button key={i}>{item}</Button>
+          <Button key={i} onClick={()=> handleClick(item)}>
+            {item}%
+          </Button>
         ))}
-        <Input type="number" placeholder="Custom" max={100}/>
+        <Input type="number" placeholder="Custom" max={100} />
       </DivBtn>
     </Section>
   );

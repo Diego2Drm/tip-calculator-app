@@ -6,6 +6,8 @@ function Calculadora() {
   const handleClick = (value) => {
     setInput(input + value);
   };
+  console.log(input);
+  
 
   const handleClear = () => {
     setInput("");
@@ -39,3 +41,7 @@ function Calculadora() {
 }
 
 export default Calculadora;
+
+// 144.55 / 5 = 28.51
+// 28.51 + 15% = 32.78
+// % = 4.27
