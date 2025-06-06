@@ -49,7 +49,7 @@ font-family: "Space Mono", monospace;
 `
 
 const PercentagesBtn = () => {
-  const { handleClick } = useContext(Context)
+  const { handleClick, custom,handleCustom } = useContext(Context)
   const Percentages = [5, 10, 15, 25, 50]
 
   return (
@@ -61,7 +61,7 @@ const PercentagesBtn = () => {
             {item}%
           </Button>
         ))}
-        <Input type="number" placeholder="Custom" max={100} />
+        <Input type="number" placeholder="Custom" max={100} min={0} onChange={handleCustom} value={custom}/>
       </DivBtn>
     </Section>
   );

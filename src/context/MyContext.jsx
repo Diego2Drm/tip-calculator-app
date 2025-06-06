@@ -5,6 +5,7 @@ const Context = createContext();
 const MyContextProvider = ({ children }) => {
   const [bill, setBill] = useState("");
   const [people, setPeople] = useState("");
+  const [custom, setCustom] = useState("");
 
   // Handle Inputs
   const handleBill = (event) => {
@@ -13,7 +14,9 @@ const MyContextProvider = ({ children }) => {
   const handlePeople = (event) => {
     setPeople(Number(event.target.value));
   }
-
+  const handleCustom = (event) => {
+    setCustom(Number(event.target.value));
+  }
   // Calculator
   const [calculator, setCalculator] = useState("");
   const handleClick = (value) => {
@@ -23,10 +26,11 @@ const MyContextProvider = ({ children }) => {
     setBill("");
     setPeople("");
     setCalculator("");
+    setCustom("");
   }
 
-  const totalAmount =  bill && people && calculator ? (bill / people).toFixed(2) * calculator : null;
-  const total =  bill && people && calculator ? (bill / people) + totalAmount : null;
+  const totalAmount = bill && people ? (bill / people).toFixed(2) * (custom ? custom / 100 : calculator) : null;
+  const total = bill && people ? (bill / people) + totalAmount : null;
 
   const value = {
     bill,
@@ -34,6 +38,8 @@ const MyContextProvider = ({ children }) => {
     people,
     handlePeople,
     handleClick,
+    custom,
+    handleCustom,
     totalAmount,
     total,
     handleClear
