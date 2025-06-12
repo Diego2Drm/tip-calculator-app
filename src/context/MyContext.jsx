@@ -18,15 +18,18 @@ const MyContextProvider = ({ children }) => {
     setCustom(Number(event.target.value));
   }
   // Calculator
+  const [isActive, setIsActive] = useState(null);
   const [calculator, setCalculator] = useState("");
-  const handleClick = (value) => {
+  const handleClick = (value, id) => {
     setCalculator(value / 100);
+    setIsActive(id)
   }
   const handleClear = () => {
     setBill("");
     setPeople("");
     setCalculator("");
     setCustom("");
+    setIsActive(null)
   }
 
   const totalAmount = bill && people ? (bill / people).toFixed(2) * (custom ? custom / 100 : calculator) : null;
@@ -37,6 +40,7 @@ const MyContextProvider = ({ children }) => {
     handleBill,
     people,
     handlePeople,
+    isActive,
     handleClick,
     custom,
     handleCustom,

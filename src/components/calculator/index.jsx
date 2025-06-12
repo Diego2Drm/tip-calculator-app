@@ -13,15 +13,28 @@ const Section = styled.section`
   margin-top: 3rem;
   padding: 2rem;
   padding-bottom: 3rem;
+
+  @media (min-width: 1024px){
+    width: 70%;
+    margin: 5rem auto;
+    display: flex;
+    gap: 2rem;
+    border-radius: 2rem;
+    box-shadow: 0 0 5rem ${Theme.colors.Green400};
+  }
 `
 
 const Calculator = () => {
   return (
     <Section>
-      <InputBill />
-      <PercentagesBtn />
-      <InputPeople />
-      <Results />
+      <div style={{width: "100%", height: "100%"}}>
+        <InputBill />
+        <PercentagesBtn />
+        <InputPeople />
+      </div>
+      <div style={{width: "100%"}}>
+        <Results />
+      </div>
     </Section>
   );
 };

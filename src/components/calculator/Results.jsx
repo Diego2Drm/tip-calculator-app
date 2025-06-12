@@ -24,40 +24,55 @@ flex-direction: column;
   font-weight: 600;
   margin-top: .5rem;
 }
+@media (min-width: 1024px){
+  & span:nth-child(1){
+  font-size: 1.8rem;
+}
+& span:nth-child(2){
+  font-size: 1.4rem;
+}
+}
 `
 const Result = styled.p`
 color: ${Theme.colors.Green400};
 font-size: 2.5rem;
 font-weight: bold;
+@media (min-width: 1024px){
+  font-size: 3rem;
+}
 `
 const BtnReset = styled.button`
 margin-top: 3rem;
 border: none;
-background: ${Theme.colors.Green400};
-color: ${Theme.colors.Green900};
+background:${({ $total }) => ($total ? Theme.colors.Green400 : Theme.colors.Grey500)};
+color: ${({ $total }) => ($total ? Theme.colors.Green900 : Theme.colors.Grey400)};
 font-weight: 800;
 text-transform: uppercase;
 text-align: center;
 padding: 1rem;
 width: 100%;
 border-radius: 1rem;
+cursor: ${({ $total }) => ($total ? "pointer" : "not-allowed")};
+opacity: ${({ $total }) => ($total ? 1 : 0.5)};
 `
 
 const Results = () => {
-  const { totalAmount, total, handleClear } = useContext(Context)
+  const { totalAmount, total, bill, people, custom, isActive,calculator ,handleClear } = useContext(Context)
 
   return (
     <Section $primary>
-      <Div>
-        <Text><span>Tip Amount</span><span> / person</span></Text>
-        <Result>{Number(totalAmount).toFixed(2)}</Result>
-      </Div>
-      <Div $primary>
-        <Text><span>Total</span><span> / person</span></Text>
-        <Result>{Number(total).toFixed(2)}</Result>
-      </Div>
+      <div>
+        <Div>
+          <Text><span>Tip Amount</span><span> / person</span></Text>
+          <Result>{Number(totalAmount).toFixed(2)}</Result>
+        </Div>
+        <Div $primary>
+          <Text><span>Total</span><span> / person</span></Text>
+          <Result>{Number(total).toFixed(2)}</Result>
+        </Div>
+      </div>
 
-      <BtnReset onClick={handleClear}>
+      <BtnReset $total={ bill || people || isActive || calculator || custom} onClick={handleClear}>
         Reset
       </BtnReset>
     </Section>

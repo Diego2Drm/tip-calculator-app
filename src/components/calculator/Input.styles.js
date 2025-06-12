@@ -2,11 +2,18 @@ import styled from "styled-components"
 import { Theme } from "../../GlobalStyle"
 
 export const Section = styled.section`
-margin-top: 3rem;
+margin-top: ${props => props.$primary ? "3rem" : "3rem"};
 width: 100%;
 background: ${props => props.$primary ? Theme.colors.Green900 : "transparent"};
 padding: ${props => props.$primary ? "2rem" : "0"};
 border-radius: ${props => props.$primary ? "1.5rem" : "0"};
+height: 100%;
+@media (min-width: 628px){
+  margin-top: ${props => props.$primary && "0rem"};
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 `
 export const Label = styled.label`
 display: flex;
