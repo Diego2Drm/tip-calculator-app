@@ -20,7 +20,8 @@ gap: 1rem;
 const Button = styled.button`
 background: ${({$isactive}) => ( $isactive ? Theme.colors.Green400 : Theme.colors.Green900)};
 border: 1px solid ${({$isactive}) => ( $isactive ? Theme.colors.Grey400 : Theme.colors.Green900)};
-color: ${Theme.colors.White};
+color: ${({$isactive}) => ( $isactive ? Theme.colors.Green900 : Theme.colors.White)};
+font-weight: bold;
 font-size: 2rem;
 text-align: center;
 border-radius: 1rem;
@@ -28,9 +29,14 @@ padding: 1rem;
 width: 45%;
 height: 5rem;
 font-family: "Space Mono", monospace;
+cursor: pointer;
 @media (min-width: 1024px){
   width: 15rem;
-  cursor: pointer;
+}
+&:hover{
+background: ${Theme.colors.Grey200};
+color: ${Theme.colors.Green900};
+border: none;
 }
 `
 // background:${({ total }) => (total ? Theme.colors.Green400 : Theme.colors.Grey500)} ;
@@ -54,6 +60,14 @@ font-family: "Space Mono", monospace;
 }
 @media (min-width: 1024px){
   width: 15rem;
+}
+&:hover{
+  cursor: pointer;
+  outline: 2px solid ${Theme.colors.Green400};
+}
+&:focus{
+  cursor: pointer;
+  outline: 2px solid ${Theme.colors.Green400};
 }
 `
 

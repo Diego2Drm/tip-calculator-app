@@ -1,18 +1,23 @@
 import React, { useContext } from "react";
 import IconPerson from "../../assets/images/icon-person.svg"
-import { DivInput, Img, Input, Label, Section, Title } from "./Input.styles";
+import { DivContent, DivInput, Img, Input, Label, Section, TextError, Title } from "./Input.styles";
 import { Context } from "../../context/MyContext";
 
 
 const InputPeople = () => {
-  const { people, handlePeople } = useContext(Context);
+  const { people, handlePeople, hasPeople } = useContext(Context);
   return (
     <Section>
       <Label>
-        <Title>Number of People</Title>
+        <DivContent>
+          <Title>Number of People</Title>
+          {
+            hasPeople && <TextError>Can't be zero</TextError>
+          }
+        </DivContent>
         <DivInput>
           <Img src={IconPerson} alt="icon-person" />
-          <Input type="number" placeholder="0" min={0} onChange={handlePeople} value={people}/>
+          <Input type="number" placeholder="0" min={0} onChange={handlePeople} value={people} $hasData={hasPeople}/>
         </DivInput>
       </Label>
     </Section>

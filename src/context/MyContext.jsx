@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 
 const Context = createContext();
 
@@ -32,6 +32,21 @@ const MyContextProvider = ({ children }) => {
     setIsActive(null)
   }
 
+  const [hasBill, setHasBill] = useState(false);
+  const [hasPeople, setHasPeople] = useState(false);
+
+  useEffect(() => {
+    if (!bill && people > 0) {
+      setHasBill(true);
+    } else if (bill > 0 && !people) {
+      setHasPeople(true);
+    } else {
+      setHasBill(false);
+      setHasPeople(false);
+    }
+  }, [bill, people])
+
+
   const totalAmount = bill && people ? (bill / people).toFixed(2) * (custom ? custom / 100 : calculator) : null;
   const total = bill && people ? (bill / people) + totalAmount : null;
 
@@ -46,7 +61,9 @@ const MyContextProvider = ({ children }) => {
     handleCustom,
     totalAmount,
     total,
-    handleClear
+    handleClear,
+    hasBill,
+    hasPeople
   }
 
   return (

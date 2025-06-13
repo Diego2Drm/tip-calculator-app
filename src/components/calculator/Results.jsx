@@ -54,6 +54,9 @@ width: 100%;
 border-radius: 1rem;
 cursor: ${({ $total }) => ($total ? "pointer" : "not-allowed")};
 opacity: ${({ $total }) => ($total ? 1 : 0.5)};
+&:hover{
+  background: ${({ $total }) => ($total ? Theme.colors.Grey200 : "red")};
+}
 `
 
 const Results = () => {

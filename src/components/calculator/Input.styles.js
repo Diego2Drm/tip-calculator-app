@@ -15,6 +15,11 @@ height: 100%;
   justify-content: space-between;
 }
 `
+export const DivContent = styled.div`
+display: flex;
+justify-content: space-between;
+align-items: center;
+`
 export const Label = styled.label`
 display: flex;
 flex-direction: column;
@@ -29,7 +34,7 @@ export const Input = styled.input`
 width: 100%;
 padding: 1rem;
 border-radius: 1rem;
-border: none;
+border: 2px solid ${({$hasData}) => ($hasData ? "red" : "transparent")};
 background: ${Theme.colors.Grey50};
 color: ${Theme.colors.Green900};
 font-weight: bolder;
@@ -37,8 +42,15 @@ font-size: 1.8rem;
 text-align: end;
 box-shadow: 0 0 .5rem ${Theme.colors.Grey200};
 font-family: "Space Mono", monospace;
+cursor: pointer;
 &::placeholder{
   color: ${Theme.colors.Grey400};
+}
+&:focus{
+  outline: 2px solid ${Theme.colors.Green400};
+}
+&:hover{
+  outline: 2px solid ${Theme.colors.Green400};
 }
 `
 export const DivInput = styled.div`
@@ -49,4 +61,11 @@ position: absolute;
 top: 50%;
 left: 1rem;
 transform: translateY(-50%);
+`
+
+// Active States
+export const TextError = styled.p`
+font-size: 1.2rem;
+font-weight: bold;
+color: red;
 `
