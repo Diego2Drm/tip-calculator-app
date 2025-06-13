@@ -16,13 +16,19 @@ const MyContextProvider = ({ children }) => {
   }
   const handleCustom = (event) => {
     setCustom(Number(event.target.value));
+    if (event.target.value) {
+      setCalculator("")
+      setIsActive(null)
+    }
   }
   // Calculator
   const [isActive, setIsActive] = useState(null);
   const [calculator, setCalculator] = useState("");
+  
   const handleClick = (value, id) => {
     setCalculator(value / 100);
     setIsActive(id)
+    setCustom("")
   }
   const handleClear = () => {
     setBill("");
