@@ -30,8 +30,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Github](https://github.com/Diego2Drm/age-calculator-app-main)
-- Live Site URL: [age-calculator-app-main](https://diego2drm.github.io/age-calculator-app-main/) 
+- Solution URL: [Github](https://diego2drm.github.io/tip-calculator-app/)
+- Live Site URL: [age-calculator-app-main](https://github.com/Diego2Drm/tip-calculator-app) 
 
 ## My process
 
@@ -85,7 +85,6 @@ color: ${Theme.colors.Green900};
 import { ThemeProvider } from "styled-components"
 import { GlobalStyle, Theme } from "./GlobalStyle"
 import { Hero } from "./components/Hero"
-import Calculadora from "./Calculadora"
 import { Calculator } from "./components/calculator"
 import { MyContextProvider } from "./context/MyContext"
 
@@ -100,7 +99,6 @@ function App() {
         </Hero>
       </ThemeProvider>
     </MyContextProvider>
-    // <Calculadora />
   )
 }
 ```
